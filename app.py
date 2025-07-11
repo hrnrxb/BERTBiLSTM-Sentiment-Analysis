@@ -1,11 +1,10 @@
-# app.py
+
 import torch
 import torch.nn as nn
 from transformers import BertTokenizer
 import gradio as gr
 from utils import clean_text
 
-# ✅ تعریف کلاس مدل BERT + BiLSTM
 class BERTBiLSTM(nn.Module):
     def __init__(self, hidden_size=128, num_classes=2):
         super(BERTBiLSTM, self).__init__()
@@ -22,13 +21,13 @@ class BERTBiLSTM(nn.Module):
         out = self.dropout(lstm_out[:, -1, :])
         return self.fc(out)
 
-# ✅ بارگذاری مدل و توکنایزر
+
 tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
 model = BERTBiLSTM()
 model.load_state_dict(torch.load("model/pytorch_model.bin", map_location="cpu"))
 model.eval()
 
-# ✅ تابع پیش‌بینی
+
 def predict_sentiment(text):
     cleaned = clean_text(text)
     encoded = tokenizer(cleaned, return_tensors="pt", truncation=True, padding=True, max_length=128)
@@ -42,7 +41,7 @@ def predict_sentiment(text):
 
     return "🟢 Positive" if pred == 1 else "🔴 Negative"
 
-# ✅ رابط Gradio
+
 iface = gr.Interface(
     fn=predict_sentiment,
     inputs=gr.Textbox(lines=4, placeholder="Enter a movie review..."),
