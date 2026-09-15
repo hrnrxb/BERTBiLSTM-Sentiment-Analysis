@@ -22,8 +22,8 @@ Follow these steps to set up and run the sentiment classifier on your local mach
 1.  **Clone the Repository:**
     Start by getting a copy of the project files to your local system.
     ```bash
-    git clone [https://github.com/your-username/your-repo-name](https://github.com/your-username/your-repo-name) # Replace with your actual repo URL
-    cd your-repo-name # Replace with your actual repo name
+    git clone https://github.com/hrnrxb/BERTBiLSTM-Sentiment-Analysis
+    cd BERTBiLSTM-Sentiment-Analysis
     ```
 
 2.  **Create and Activate a Python Virtual Environment:**
@@ -45,6 +45,4 @@ Follow these steps to set up and run the sentiment classifier on your local mach
     ```bash
     python app.py
     ```
-    The application will start, and you'll typically find the web interface accessible in your browser at `http://127.0.0.1:7860/`.
-
 ---
